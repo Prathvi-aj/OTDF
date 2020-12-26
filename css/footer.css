@@ -1,0 +1,12 @@
+#footer{
+	height: 20px;
+	border-top: 1px solid green;
+	/*position: relative;*/
+	background: url('../images/background.jpg');
+	font-size: 12px;
+	font-weight: bold;
+	color: #ff3333;
+	position: fixed;
+	bottom: 0;
+	width: 1000px;
+}

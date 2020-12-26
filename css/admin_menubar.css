@@ -1,0 +1,16 @@
+#menubar{
+	/* border: 1px solid red; */
+	height: 50px;
+	/* background-color: #e0e0e0; */
+	padding-top: 8px;
+}
+
+#menubar a{
+	text-decoration: none;
+	color: white;
+	font-size: 22px;
+	font-weight: bold;
+	background-color: #74b6fe;
+	padding: 7px 12px;
+	margin-left: 10px;
+}

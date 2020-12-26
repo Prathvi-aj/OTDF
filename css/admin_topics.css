@@ -1,0 +1,98 @@
+#topic_box{
+	border: 1px solid red;
+	width: 90%;
+	margin: 20px auto;
+}
+
+.tpbox_cell{
+	border: 1px solid red;
+	width: 50%;
+}
+
+#topic_form_cell form{
+	/* border: 1px solid red; */
+	text-align: center;
+}
+
+#topic_fld{
+	font-size: 20px;
+	padding: 4px 12px;
+	border: 1px solid #999;
+	color: #777;
+	border-radius: 5px;
+}
+
+#add_topic_box{
+	width: 90%;
+	border: 1px solid green;
+	margin: 10px auto;
+}
+
+
+#add_topic_box th{
+	background-color: #2f8fe8;
+	color: white;
+	font-size: 24px;
+	height: 50px;
+}
+
+#form_cell{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+#topic_sbm{
+	font-size: 22px;
+	padding: 5px 12px;
+}
+
+#topic_box img{
+	height: 16px;
+}
+
+#topiclist_tbl{
+	border: 1px solid green;
+	width: 90%;
+	margin: 10px auto;
+}
+
+#topiclist_tbl th,#topiclist_tbl td{
+	border: 1px solid green;
+	height: 50px;
+}
+
+#topiclist_tbl th{
+	background-color: #2f8fe8;
+	color: white;
+	font-size: 24px;
+}
+
+/*
+.topic_nm{
+	width: 90%;
+	font-size: 22px;
+	font-weight: bold;
+	color: #990000;
+	padding-left: 12px;
+}
+
+.topic_delete{
+	width: 10%;
+}*/
+
+.topic_records{
+	border: 1px solid #0d3ab3;
+	width: 90%;
+	margin: 5px auto;
+	padding: 4px 8px;
+	font-size: 20px;
+	background-color: #669df9;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+#topic_list{
+	height: 50px;
+	overflow: scroll;
+}

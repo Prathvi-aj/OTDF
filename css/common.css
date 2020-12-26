@@ -1,0 +1,24 @@
+body{
+	margin: 0px auto;
+	font-family: verdana;
+}
+
+#main_container{	
+	/*border: 1px solid red;*/
+	width: 1000px;
+	margin: 0px auto;
+	background-color: #f2fdff;
+	
+}
+
+#err_box{
+	border: 1px solid #fa3d21;
+	width: 500px;
+	margin: 25px auto 0px auto;
+	background-color: #fff8f4;
+	color: #fa3d21;
+	text-align: center;
+	padding: 5px 0px;
+	font-size: 20px;
+	border-radius: 5px;
+}
