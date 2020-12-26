@@ -1,0 +1,150 @@
+/*create database otdf2;*/
+
+use otdf;
+
+create table status(
+status_id int not null primary key auto_increment,
+status varchar(15) not null	
+);
+
+insert into status (status) values ('active'),('inactive'),('open'),('close'),('blocked');
+
+create table nations(
+nation_id int not null primary key auto_increment,
+nation varchar(35) not null
+);
+
+create table action_types(
+action_type_id int not null primary key auto_increment,
+action_type varchar(12) not null 
+);
+
+create table post_types(
+post_type_id int not null primary key auto_increment,
+post_type varchar(12) not null
+);
+
+create table topics(
+topic_id int not null primary key auto_increment,
+topic varchar(25) not null,
+question_count int not null default'0',
+open_questions int not null default'0',
+last_update timestamp not null,
+status_id int not null ,
+constraint fk_status_topics foreign key(status_id) references status(status_id) 
+);
+
+alter table topics 
+alter status_id set default 1;
+
+create table users(
+user_id int not null primary key auto_increment,
+user_name varchar(35) not null,
+email varchar(60) not null unique,
+password varchar(12) not null,
+date_of_birth date ,
+nation_id int not null,
+constraint fk_nations_users foreign key(nation_id) references nations(nation_id),
+area_of_interest varchar(3000),
+orgnization varchar(45),
+current_profile varchar(35),
+question_count int not null default'0',
+response_count int not null default'0',
+status_id int not null,
+constraint fk_status_users foreign key(status_id) references status(status_id)
+);
+
+alter table users
+alter status_id set default 2;
+
+create table posts(
+post_id int not null primary key auto_increment,
+post varchar(15000) not null,
+post_date_time timestamp not null,
+like_count int not null default'0',
+dislike_count int not null default'0',
+spam_count int not null default'0',
+user_id int not null,
+constraint fk_users_posts foreign key(user_id) references users(user_id),
+post_type_id int not null,
+constraint fk_post_type_posts foreign key(post_type_id) references post_types(post_type_id),
+status_id int not null,
+constraint fk_status_posts foreign key(status_id) references status(status_id)
+);
+
+alter table posts
+alter status_id set default 1;
+
+create table questions(
+question_id int not null primary key auto_increment,
+title varchar(45) not null,
+response_count int not null default'0',
+view_count int not null default'0',
+topic_id int not null,
+constraint fk_topics_questions foreign key(topic_id) references topics(topic_id),
+post_id int not null,
+constraint fk_posts_questions foreign key(post_id) references posts(post_id)
+);
+
+create table responses(
+response_id int not null primary key auto_increment,
+question_id int not null,
+constraint fk_questions_responses foreign key(question_id) references questions(question_id),
+post_id int not null,
+constraint fk_posts_responses foreign key (post_id) references posts(post_id)
+);
+
+create table actions(
+action_id int not null primary key auto_increment,
+user_id int not null,
+constraint fk_users_actions foreign key(user_id) references users(user_id),
+post_id int not null,
+constraint fk_posts_actions foreign key(post_id) references posts (post_id),
+action_type_id int not null,
+constraint fk_action_types_actions foreign key(action_type_id) references action_types(action_type_id)
+);
+
+create table user_types
+(
+user_type_id int auto_increment primary key,
+user_type varchar(20) not null unique
+);
+
+insert into user_types (user_type) values ('Admin'),('General User');
+
+alter table users add column user_type_id int not null,
+add constraint fk_users_utypes foreign key (user_type_id)
+references user_types (user_type_id);
+
+alter table users 
+alter user_type_id set default '2'; 
+
+alter table users change column nation_id nation_id int null; 
+
+insert into users (user_name,email,password,user_type_id) 
+value ('Mohan Kumar','mohan@gmail.com','111111',1);
+
+alter table users change column 
+orgnization organization varchar(45) null;
+
+select user_id,user_name,date_of_birth,nation_id,
+area_of_interest,organization,current_profile,
+question_count,response_count,status_id,user_type_id
+from users where email=? and password=?
+
+---------------------------
+select 
+
+question_id,title,response_count,view_count,post_date_time,p.user_id,
+user_name,p.status_id,status 
+
+from 
+
+questions as q inner join posts as p inner join users as u inner join 
+status as s
+
+where 
+
+topic_id=? and q.post_id=p.post_id and p.user_id=u.user_id and 
+p.status_id=s.status_id
+-------------------------------
