@@ -1,0 +1,9 @@
+otdf means online technical discussion form , where we discuss our technical qustions and answers .
+
+Run this web application using following stop
+1.download repositery 
+2.copy otdf folder 
+3.paste folder in webapps (Tomcat/webapps/)
+4.create database in mysql (database name is otdf)
+5.start tomcat server 
+6.in browser write : localhost::8080/otdf 
